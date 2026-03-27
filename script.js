@@ -667,7 +667,7 @@ async function handleSubmit(e){
       console.log('MongoDB update success:', existingMongoId);
     } else {
     // INSERT new record in MongoDB
-    const res = await fetch('https://alfian-lkgithubio-production.up.railway.app/insert', {
+    const res = await ('https://alfian-lkgithubio-production.up.railway.app/insert', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -785,7 +785,7 @@ async function submitLogin() {
     const password = document.getElementById('loginPassword').value;
     const errEl = document.getElementById('loginError');
     try {
-        const res = await fetch('https://alfian-lkgithubio-production.up.railway.app/login', {
+        const res = await fetch('http://alfian-lkgithubio-production.up.railway.app/login', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             credentials: 'include', body: JSON.stringify({ username, password })
         });
