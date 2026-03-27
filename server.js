@@ -10,8 +10,9 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const app = express();
-const uri = "mongodb+srv://alfiankalani_db_user:manajemeninfobio@mib-uts.e3tztgr.mongodb.net/?appName=mib-uts";
+const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
+app.set('trust proxy', 1);
 
 // Middleware to parse JSON and serve HTML files
 app.use(cors({
@@ -21,10 +22,14 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static("public"));
 app.use(session({
-  secret: "medcore-secret-key",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 1000 * 60 * 60 }  // session lasts 1 hour
+  cookie: {
+    maxAge: 1000 * 60 * 60,
+    secure: true,        // required for HTTPS (Railway uses HTTPS)
+    sameSite: 'none'     // required for cross-site cookies (GitHub Pages → Railway)
+  }
 }));
 
 // ── Middleware: protect admin routes ──
