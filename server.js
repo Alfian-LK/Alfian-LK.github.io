@@ -17,7 +17,9 @@ app.set('trust proxy', 1);
 // Middleware to parse JSON and serve HTML files
 app.use(cors({
   origin: 'https://alfian-lk.github.io',
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
 }));
 app.use(express.json());
 app.use(express.static("public"));
