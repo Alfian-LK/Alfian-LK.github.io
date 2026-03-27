@@ -785,7 +785,7 @@ async function submitLogin() {
     const password = document.getElementById('loginPassword').value;
     const errEl = document.getElementById('loginError');
     try {
-        const res = await fetch('http://alfian-lkgithubio-production.up.railway.app/login', {
+        const res = await fetch('https://alfian-lkgithubio-production.up.railway.app/login', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             credentials: 'include', body: JSON.stringify({ username, password })
         });
