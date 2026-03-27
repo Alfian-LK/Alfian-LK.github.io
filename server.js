@@ -15,7 +15,7 @@ const client = new MongoClient(uri);
 
 // Middleware to parse JSON and serve HTML files
 app.use(cors({
-  origin: 'https://catsushiroll.github.io',
+  origin: 'https://alfian-lk.github.io',
   credentials: true
 }));
 app.use(express.json());
